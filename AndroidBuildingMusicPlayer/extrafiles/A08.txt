@@ -1,0 +1,961 @@
+btn_play.xml
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/img_btn_play_pressed"
+        android:state_focused="true"
+        android:state_pressed="true" />
+    <item android:drawable="@drawable/img_btn_play_pressed"
+        android:state_focused="false"
+        android:state_pressed="true" />
+    <item android:drawable="@drawable/img_btn_play_pressed"
+            android:state_focused="true" />
+    <item android:drawable="@drawable/img_btn_play"
+        android:state_focused="false"
+        android:state_pressed="false" />
+</selector>
+
+
+
+
+
+
+
+seekbar_progress_bg.xml
+<?xml version="1.0" encoding="utf-8"?>
+ <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <clip>
+        <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+            android:src="@drawable/img_seekbar_progress_blue"
+            android:tileMode="repeat"
+            android:antialias="true"
+            android:dither="false"
+            android:filter="false"
+            android:gravity="left"
+        />
+        </clip>
+    </item>
+</layer-list>
+
+
+
+
+
+seekbar_progress.xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background"
+        android:drawable="@drawable/img_seekbar_bg"
+        android:dither="true">
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <gradient
+                    android:startColor="#80028ac8"
+                    android:centerColor="#80127fb1"
+                    android:centerY="0.75"
+                    android:endColor="#a004638f"
+                    android:angle="270"
+                />
+            </shape>
+        </clip>
+    </item>
+    <item
+        android:id="@android:id/progress"
+        android:drawable="@drawable/seekbar_progress_bg"
+    />
+</layer-list>
+
+
+
+<SeekBar
+            android:id="@+id/songProgressBar"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="20dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginBottom="20dp"
+             android:layout_above="@id/player_footer_bg"
+             android:thumb="@drawable/seek_handler"
+             android:progressDrawable="@drawable/seekbar_progress"
+             android:paddingLeft="6dp"
+             android:paddingRight="6dp"/>
+
+
+
+
+player.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/player_background"> 
+ 
+    <!-- Player Header -->
+    <LinearLayout
+        android:id="@+id/player_header_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:background="@layout/bg_player_header"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+ 
+        <!-- Song Title -->
+        <TextView
+            android:id="@+id/songTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#04b3d2"
+            android:textSize="16dp"
+            android:paddingLeft="10dp"
+            android:textStyle="bold"
+            android:text="The Good, The Bad And The Ugly"
+            android:layout_marginTop="10dp"/>
+ 
+        <!-- Playlist button -->
+        <ImageButton
+            android:id="@+id/btnPlaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/btn_playlist"
+            android:background="@null"/>
+    </LinearLayout>
+ 
+    <!-- Song Thumbnail Image -->
+    <LinearLayout
+        android:id="@+id/songThumbnail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:layout_below="@id/player_header_bg">
+        <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/adele"/>
+    </LinearLayout>
+ 
+    <!-- Player Footer -->
+    <LinearLayout
+        android:id="@+id/player_footer_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@layout/bg_player_footer"
+        android:gravity="center">
+ 
+        <!-- Player Buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@layout/rounded_corner"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <!-- Previous Button -->
+            <ImageButton
+                android:id="@+id/btnPrevious"
+                android:src="@drawable/btn_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Backward Button -->
+            <ImageButton
+                android:id="@+id/btnBackward"
+                android:src="@drawable/btn_backward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Play Button -->
+            <ImageButton
+                android:id="@+id/btnPlay"
+                android:src="@drawable/btn_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Forward Button -->
+            <ImageButton
+                android:id="@+id/btnForward"
+                android:src="@drawable/btn_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Next Button -->
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:src="@drawable/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+        </LinearLayout>
+    </LinearLayout>
+ 
+    <!-- Progress Bar/Seek bar -->
+    <SeekBar
+            android:id="@+id/songProgressBar"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="20dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginBottom="20dp"
+             android:layout_above="@id/player_footer_bg"
+             android:thumb="@drawable/seek_handler"
+             android:progressDrawable="@drawable/seekbar_progress"
+             android:paddingLeft="6dp"
+             android:paddingRight="6dp"/>
+ 
+    <!-- Timer Display -->
+    <LinearLayout
+        android:id="@+id/timerDisplay"
+        android:layout_above="@id/songProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp">
+        <!-- Current Duration Label -->
+        <TextView
+            android:id="@+id/songCurrentDurationLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textColor="#eeeeee"
+            android:textStyle="bold"/>
+        <!-- Total Duration Label -->
+        <TextView
+            android:id="@+id/songTotalDurationLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="#04cbde"
+            android:textStyle="bold"/>
+    </LinearLayout>
+ 
+    <!-- Repeat / Shuffle buttons -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/timerDisplay"
+        android:gravity="center">
+        <!-- Repeat Button -->
+        <ImageButton
+            android:id="@+id/btnRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_repeat"
+            android:layout_marginRight="5dp"
+            android:background="@null"/>
+ 
+        <!-- Shuffle Button -->
+         <ImageButton
+            android:id="@+id/btnShuffle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_shuffle"
+            android:layout_marginLeft="5dp"
+            android:background="@null"/>
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+list_selector.xml
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Selector style for listrow -->
+<item
+ android:state_selected="false"
+    android:state_pressed="false"
+    android:drawable="@drawable/gradient_bg" />
+<item android:state_pressed="true"
+    android:drawable="@drawable/gradient_bg_hover" />
+<item android:state_selected="true"
+ android:state_pressed="false"
+    android:drawable="@drawable/gradient_bg_hover" />
+</selector>
+
+
+playlist.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+ 
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#242424"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector" />
+ 
+</LinearLayout>
+
+
+
+playlist_item.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/list_selector"
+    android:padding="5dp">
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:color="#f3f3f3"/>
+</LinearLayout>
+
+
+SongsManager.mp3
+package com.androidhive.musicplayer;
+ 
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.HashMap;
+ 
+public class SongsManager {
+    // SDCard Path
+    final String MEDIA_PATH = new String("/sdcard/");
+    private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
+ 
+    // Constructor
+    public SongsManager(){
+ 
+    }
+ 
+    /**
+     * Function to read all mp3 files from sdcard
+     * and store the details in ArrayList
+     * */
+    public ArrayList<HashMap<String, String>> getPlayList(){
+        File home = new File(MEDIA_PATH);
+ 
+        if (home.listFiles(new FileExtensionFilter()).length > 0) {
+            for (File file : home.listFiles(new FileExtensionFilter())) {
+                HashMap<String, String> song = new HashMap<String, String>();
+                song.put("songTitle", file.getName().substring(0, (file.getName().length() - 4)));
+                song.put("songPath", file.getPath());
+ 
+                // Adding each song to SongList
+                songsList.add(song);
+            }
+        }
+        // return songs list array
+        return songsList;
+    }
+ 
+    /**
+     * Class to filter files which are having .mp3 extension
+     * */
+    class FileExtensionFilter implements FilenameFilter {
+        public boolean accept(File dir, String name) {
+            return (name.endsWith(".mp3") || name.endsWith(".MP3"));
+        }
+    }
+}
+
+
+
+PlayListActivity.java
+package com.androidhive.musicplayer;
+ 
+import java.util.ArrayList;
+import java.util.HashMap;
+ 
+import android.app.ListActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+ 
+public class PlayListActivity extends ListActivity {
+    // Songs list
+    public ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
+ 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.playlist);
+ 
+        ArrayList<HashMap<String, String>> songsListData = new ArrayList<HashMap<String, String>>();
+ 
+        SongsManager plm = new SongsManager();
+        // get all songs from sdcard
+        this.songsList = plm.getPlayList();
+ 
+        // looping through playlist
+        for (int i = 0; i < songsList.size(); i++) {
+            // creating new HashMap
+            HashMap<String, String> song = songsList.get(i);
+ 
+            // adding HashList to ArrayList
+            songsListData.add(song);
+        }
+ 
+        // Adding menuItems to ListView
+        ListAdapter adapter = new SimpleAdapter(this, songsListData,
+                R.layout.playlist_item, new String[] { "songTitle" }, new int[] {
+                        R.id.songTitle });
+ 
+        setListAdapter(adapter);
+ 
+        // selecting single ListView item
+        ListView lv = getListView();
+        // listening to single listitem click
+        lv.setOnItemClickListener(new OnItemClickListener() {
+ 
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int position, long id) {
+                // getting listitem index
+                int songIndex = position;
+ 
+                // Starting new intent
+                Intent in = new Intent(getApplicationContext(),
+                        AndroidBuildingMusicPlayerActivity.class);
+                // Sending songIndex to PlayerActivity
+                in.putExtra("songIndex", songIndex);
+                setResult(100, in);
+                // Closing PlayListView
+                finish();
+            }
+        });
+    }
+}
+
+
+
+
+Utilities.java
+package com.androidhive.musicplayer;
+ 
+public class Utilities {
+ 
+    /**
+     * Function to convert milliseconds time to
+     * Timer Format
+     * Hours:Minutes:Seconds
+     * */
+    public String milliSecondsToTimer(long milliseconds){
+        String finalTimerString = "";
+        String secondsString = "";
+ 
+        // Convert total duration into time
+           int hours = (int)( milliseconds / (1000*60*60));
+           int minutes = (int)(milliseconds % (1000*60*60)) / (1000*60);
+           int seconds = (int) ((milliseconds % (1000*60*60)) % (1000*60) / 1000);
+           // Add hours if there
+           if(hours > 0){
+               finalTimerString = hours + ":";
+           }
+ 
+           // Prepending 0 to seconds if it is one digit
+           if(seconds < 10){
+               secondsString = "0" + seconds;
+           }else{
+               secondsString = "" + seconds;}
+ 
+           finalTimerString = finalTimerString + minutes + ":" + secondsString;
+ 
+        // return timer string
+        return finalTimerString;
+    }
+ 
+    /**
+     * Function to get Progress percentage
+     * @param currentDuration
+     * @param totalDuration
+     * */
+    public int getProgressPercentage(long currentDuration, long totalDuration){
+        Double percentage = (double) 0;
+ 
+        long currentSeconds = (int) (currentDuration / 1000);
+        long totalSeconds = (int) (totalDuration / 1000);
+ 
+        // calculating percentage
+        percentage =(((double)currentSeconds)/totalSeconds)*100;
+ 
+        // return percentage
+        return percentage.intValue();
+    }
+ 
+    /**
+     * Function to change progress to timer
+     * @param progress -
+     * @param totalDuration
+     * returns current duration in milliseconds
+     * */
+    public int progressToTimer(int progress, int totalDuration) {
+        int currentDuration = 0;
+        totalDuration = (int) (totalDuration / 1000);
+        currentDuration = (int) ((((double)progress) / 100) * totalDuration);
+ 
+        // return current duration in milliseconds
+        return currentDuration * 1000;
+    }
+}
+
+
+AndroidBuildingMusicPlayerActivity.java
+public class AndroidBuildingMusicPlayerActivity extends Activity
+       implements OnCompletionListener, SeekBar.OnSeekBarChangeListener {
+
+
+
+AndroidManifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.androidhive.musicplayer"
+    android:versionCode="1"
+    android:versionName="1.0" >
+ 
+    <uses-sdk android:minSdkVersion="8" />
+ 
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".AndroidBuildingMusicPlayerActivity"
+            android:label="@string/app_name"
+            android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+ 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+ 
+        <activity
+            android:name=".PlayListActivity" />
+    </application>
+ 
+</manifest>
+<!-- AndroidBuildingMusicPlayerActivity -->
+
+
+
+
+
+
+AndroidBuildingMusicPlayerActivity.java
+package com.androidhive.musicplayer;
+ 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+ 
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+ 
+public class AndroidBuildingMusicPlayerActivity extends Activity implements OnCompletionListener, SeekBar.OnSeekBarChangeListener {
+ 
+    private ImageButton btnPlay;
+    private ImageButton btnForward;
+    private ImageButton btnBackward;
+    private ImageButton btnNext;
+    private ImageButton btnPrevious;
+    private ImageButton btnPlaylist;
+    private ImageButton btnRepeat;
+    private ImageButton btnShuffle;
+    private SeekBar songProgressBar;
+    private TextView songTitleLabel;
+    private TextView songCurrentDurationLabel;
+    private TextView songTotalDurationLabel;
+    // Media Player
+    private  MediaPlayer mp;
+    // Handler to update UI timer, progress bar etc,.
+    private Handler mHandler = new Handler();;
+    private SongsManager songManager;
+    private Utilities utils;
+    private int seekForwardTime = 5000; // 5000 milliseconds
+    private int seekBackwardTime = 5000; // 5000 milliseconds
+    private int currentSongIndex = 0;
+    private boolean isShuffle = false;
+    private boolean isRepeat = false;
+    private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
+ 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.player);
+ 
+        // All player buttons
+        btnPlay = (ImageButton) findViewById(R.id.btnPlay);
+        btnForward = (ImageButton) findViewById(R.id.btnForward);
+        btnBackward = (ImageButton) findViewById(R.id.btnBackward);
+        btnNext = (ImageButton) findViewById(R.id.btnNext);
+        btnPrevious = (ImageButton) findViewById(R.id.btnPrevious);
+        btnPlaylist = (ImageButton) findViewById(R.id.btnPlaylist);
+        btnRepeat = (ImageButton) findViewById(R.id.btnRepeat);
+        btnShuffle = (ImageButton) findViewById(R.id.btnShuffle);
+        songProgressBar = (SeekBar) findViewById(R.id.songProgressBar);
+        songTitleLabel = (TextView) findViewById(R.id.songTitle);
+        songCurrentDurationLabel = (TextView) findViewById(R.id.songCurrentDurationLabel);
+        songTotalDurationLabel = (TextView) findViewById(R.id.songTotalDurationLabel);
+ 
+        // Mediaplayer
+        mp = new MediaPlayer();
+        songManager = new SongsManager();
+        utils = new Utilities();
+ 
+        // Listeners
+        songProgressBar.setOnSeekBarChangeListener(this); // Important
+        mp.setOnCompletionListener(this); // Important
+ 
+        // Getting all songs list
+        songsList = songManager.getPlayList();
+ 
+        // By default play first song
+        playSong(0);
+ 
+        /**
+         * Play button click event
+         * plays a song and changes button to pause image
+         * pauses a song and changes button to play image
+         * */
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                // check for already playing
+                if(mp.isPlaying()){
+                    if(mp!=null){
+                        mp.pause();
+                        // Changing button image to play button
+                        btnPlay.setImageResource(R.drawable.btn_play);
+                    }
+                }else{
+                    // Resume song
+                    if(mp!=null){
+                        mp.start();
+                        // Changing button image to pause button
+                        btnPlay.setImageResource(R.drawable.btn_pause);
+                    }
+                }
+ 
+            }
+        });
+ 
+        /**
+         * Forward button click event
+         * Forwards song specified seconds
+         * */
+        btnForward.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                // get current song position
+                int currentPosition = mp.getCurrentPosition();
+                // check if seekForward time is lesser than song duration
+                if(currentPosition + seekForwardTime <= mp.getDuration()){
+                    // forward song
+                    mp.seekTo(currentPosition + seekForwardTime);
+                }else{
+                    // forward to end position
+                    mp.seekTo(mp.getDuration());
+                }
+            }
+        });
+ 
+        /**
+         * Backward button click event
+         * Backward song to specified seconds
+         * */
+        btnBackward.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                // get current song position
+                int currentPosition = mp.getCurrentPosition();
+                // check if seekBackward time is greater than 0 sec
+                if(currentPosition - seekBackwardTime >= 0){
+                    // forward song
+                    mp.seekTo(currentPosition - seekBackwardTime);
+                }else{
+                    // backward to starting position
+                    mp.seekTo(0);
+                }
+ 
+            }
+        });
+ 
+        /**
+         * Next button click event
+         * Plays next song by taking currentSongIndex + 1
+         * */
+        btnNext.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                // check if next song is there or not
+                if(currentSongIndex < (songsList.size() - 1)){
+                    playSong(currentSongIndex + 1);
+                    currentSongIndex = currentSongIndex + 1;
+                }else{
+                    // play first song
+                    playSong(0);
+                    currentSongIndex = 0;
+                }
+ 
+            }
+        });
+ 
+        /**
+         * Back button click event
+         * Plays previous song by currentSongIndex - 1
+         * */
+        btnPrevious.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                if(currentSongIndex > 0){
+                    playSong(currentSongIndex - 1);
+                    currentSongIndex = currentSongIndex - 1;
+                }else{
+                    // play last song
+                    playSong(songsList.size() - 1);
+                    currentSongIndex = songsList.size() - 1;
+                }
+ 
+            }
+        });
+ 
+        /**
+         * Button Click event for Repeat button
+         * Enables repeat flag to true
+         * */
+        btnRepeat.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                if(isRepeat){
+                    isRepeat = false;
+                    Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
+                    btnRepeat.setImageResource(R.drawable.btn_repeat);
+                }else{
+                    // make repeat to true
+                    isRepeat = true;
+                    Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
+                    // make shuffle to false
+                    isShuffle = false;
+                    btnRepeat.setImageResource(R.drawable.btn_repeat_focused);
+                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
+                }
+            }
+        });
+ 
+        /**
+         * Button Click event for Shuffle button
+         * Enables shuffle flag to true
+         * */
+        btnShuffle.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                if(isShuffle){
+                    isShuffle = false;
+                    Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
+                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
+                }else{
+                    // make repeat to true
+                    isShuffle= true;
+                    Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
+                    // make shuffle to false
+                    isRepeat = false;
+                    btnShuffle.setImageResource(R.drawable.btn_shuffle_focused);
+                    btnRepeat.setImageResource(R.drawable.btn_repeat);
+                }
+            }
+        });
+ 
+        /**
+         * Button Click event for Play list click event
+         * Launches list activity which displays list of songs
+         * */
+        btnPlaylist.setOnClickListener(new View.OnClickListener() {
+ 
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(getApplicationContext(), PlayListActivity.class);
+                startActivityForResult(i, 100);
+            }
+        });
+ 
+    }
+ 
+    /**
+     * Receiving song index from playlist view
+     * and play the song
+     * */
+    @Override
+    protected void onActivityResult(int requestCode,
+                                     int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 100){
+             currentSongIndex = data.getExtras().getInt("songIndex");
+             // play selected song
+             playSong(currentSongIndex);
+        }
+ 
+    }
+ 
+    /**
+     * Function to play a song
+     * @param songIndex - index of song
+     * */
+    public void  playSong(int songIndex){
+        // Play song
+        try {
+            mp.reset();
+            mp.setDataSource(songsList.get(songIndex).get("songPath"));
+            mp.prepare();
+            mp.start();
+            // Displaying Song title
+            String songTitle = songsList.get(songIndex).get("songTitle");
+            songTitleLabel.setText(songTitle);
+ 
+            // Changing Button Image to pause image
+            btnPlay.setImageResource(R.drawable.btn_pause);
+ 
+            // set Progress bar values
+            songProgressBar.setProgress(0);
+            songProgressBar.setMax(100);
+ 
+            // Updating progress bar
+            updateProgressBar();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+    /**
+     * Update timer on seekbar
+     * */
+    public void updateProgressBar() {
+        mHandler.postDelayed(mUpdateTimeTask, 100);
+    }   
+ 
+    /**
+     * Background Runnable thread
+     * */
+    private Runnable mUpdateTimeTask = new Runnable() {
+           public void run() {
+               long totalDuration = mp.getDuration();
+               long currentDuration = mp.getCurrentPosition();
+ 
+               // Displaying Total Duration time
+               songTotalDurationLabel.setText(""+utils.milliSecondsToTimer(totalDuration));
+               // Displaying time completed playing
+               songCurrentDurationLabel.setText(""+utils.milliSecondsToTimer(currentDuration));
+ 
+               // Updating progress bar
+               int progress = (int)(utils.getProgressPercentage(currentDuration, totalDuration));
+               //Log.d("Progress", ""+progress);
+               songProgressBar.setProgress(progress);
+ 
+               // Running this thread after 100 milliseconds
+               mHandler.postDelayed(this, 100);
+           }
+        };
+ 
+    /**
+     *
+     * */
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
+ 
+    }
+ 
+    /**
+     * When user starts moving the progress handler
+     * */
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        // remove message Handler from updating progress bar
+        mHandler.removeCallbacks(mUpdateTimeTask);
+    }
+ 
+    /**
+     * When user stops moving the progress hanlder
+     * */
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        mHandler.removeCallbacks(mUpdateTimeTask);
+        int totalDuration = mp.getDuration();
+        int currentPosition = utils.progressToTimer(seekBar.getProgress(), totalDuration);
+ 
+        // forward or backward to certain seconds
+        mp.seekTo(currentPosition);
+ 
+        // update timer progress again
+        updateProgressBar();
+    }
+ 
+    /**
+     * On Song Playing completed
+     * if repeat is ON play same song again
+     * if shuffle is ON play random song
+     * */
+    @Override
+    public void onCompletion(MediaPlayer arg0) {
+ 
+        // check for repeat is ON or OFF
+        if(isRepeat){
+            // repeat is on play same song again
+            playSong(currentSongIndex);
+        } else if(isShuffle){
+            // shuffle is on - play a random song
+            Random rand = new Random();
+            currentSongIndex = rand.nextInt((songsList.size() - 1) - 0 + 1) + 0;
+            playSong(currentSongIndex);
+        } else{
+            // no repeat or shuffle ON - play next song
+            if(currentSongIndex < (songsList.size() - 1)){
+                playSong(currentSongIndex + 1);
+                currentSongIndex = currentSongIndex + 1;
+            }else{
+                // play first song
+                playSong(0);
+                currentSongIndex = 0;
+            }
+        }
+    }
+ 
+    @Override
+     public void onDestroy(){
+     super.onDestroy();
+        mp.release();
+     }
+ 
+}
