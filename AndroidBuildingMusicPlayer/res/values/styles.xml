@@ -16,5 +16,8 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    <color name="player_background">#CCC</color>
+    <color name="header_color">#aaa</color>
+    <color name="footer_color">#777</color>
 
 </resources>

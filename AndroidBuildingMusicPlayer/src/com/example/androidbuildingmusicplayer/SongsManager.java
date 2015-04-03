@@ -5,8 +5,10 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.util.Log;
+
 public class SongsManager {
-	final String MEDIA_PATH = new String("/sdcard/");
+	final String MEDIA_PATH = new String("/sdcard/music/");
     private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
  
     // Constructor
@@ -20,7 +22,7 @@ public class SongsManager {
      * */
     public ArrayList<HashMap<String, String>> getPlayList(){
         File home = new File(MEDIA_PATH);
- 
+   try{
         if (home.listFiles(new FileExtensionFilter()).length > 0) {
             for (File file : home.listFiles(new FileExtensionFilter())) {
                 HashMap<String, String> song = new HashMap<String, String>();
@@ -31,6 +33,10 @@ public class SongsManager {
                 songsList.add(song);
             }
         }
+   }catch(Exception e)
+   {
+	   Log.e("File",e.toString());
+   }
         // return songs list array
         return songsList;
     }

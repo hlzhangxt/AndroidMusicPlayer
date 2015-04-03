@@ -1,6 +1,8 @@
 package com.example.androidbuildingmusicplayer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import android.app.Activity;
@@ -43,12 +45,13 @@ public class MainActivity extends Activity  implements OnCompletionListener, See
     private int currentSongIndex = 0;
     private boolean isShuffle = false;
     private boolean isRepeat = false;
+    
     private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
  
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.player);
+        setContentView(R.layout.activity_main);
  
         // All player buttons
         btnPlay = (ImageButton) findViewById(R.id.btnPlay);
@@ -209,7 +212,7 @@ public class MainActivity extends Activity  implements OnCompletionListener, See
                     Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
                     // make shuffle to false
                     isShuffle = false;
-                    btnRepeat.setImageResource(R.drawable.btn_repeat_focused);
+                    btnRepeat.setImageResource(R.drawable.btn_repeat);
                     btnShuffle.setImageResource(R.drawable.btn_shuffle);
                 }
             }
@@ -233,7 +236,7 @@ public class MainActivity extends Activity  implements OnCompletionListener, See
                     Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
                     // make shuffle to false
                     isRepeat = false;
-                    btnShuffle.setImageResource(R.drawable.btn_shuffle_focused);
+                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
                     btnRepeat.setImageResource(R.drawable.btn_repeat);
                 }
             }
